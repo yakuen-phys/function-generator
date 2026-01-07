@@ -16,7 +16,7 @@
 
   /* 署名 */
   .signature {
-    font-size: 1.25rem;  /* h5相当 */
+    font-size: 1.25rem;
     text-align: right;
     margin: 4px 8px;
   }
@@ -25,7 +25,6 @@
     margin: 8px 0;
   }
 
-  /* 周波数表示の枠 */
   .freq-box {
     display: inline-block;
     border: 3px solid #000;
@@ -45,7 +44,6 @@
     margin-left: 6px;
   }
 
-  /* ボタンコンテナ */
   .btn-row {
     display: flex;
     justify-content: center;
@@ -54,32 +52,31 @@
   }
 
   button {
-    font-size: 24px;       
-    font-weight: bold;      
-    width: 130px;           
-    height: 96px;           
+    font-size: 24px;
+    font-weight: bold;
+    width: 130px;
+    height: 96px;
     margin: 4px;
-    white-space: nowrap;    
-    overflow: hidden;       
+    white-space: nowrap;
+    overflow: hidden;
     text-overflow: ellipsis;
     box-sizing: border-box;
   }
 
-  /* ±100 Hzだけ幅を広げる（PC用） */
+  /* ±100 Hzボタン幅PC版 */
   .plus100, .minus100 {
-    width: 150px;  
+    width: 150px;
   }
 
-  /* START/STOPは横幅固定で高さも統一 */
   .control-row button {
     width: 150px;
     height: 96px;
   }
 
-  /* スマホ対応 */
+  /* スマホ版 */
   @media (max-width: 480px) {
     .signature {
-      font-size: 1rem;  
+      font-size: 1rem;
     }
 
     #freq {
@@ -90,21 +87,22 @@
       font-size: 18px;
     }
 
-    /* ±ボタンは文字そのまま、サイズも固定 */
-    .btn-row button:not(.control-row button) {
-      font-size: 24px; /* 文字サイズそのまま */
+    /* ±100Hzと±10Hzの文字サイズだけ小さくする */
+    .plus100, .minus100, .btn-row button:nth-child(2), .btn-row button:nth-child(5) {
+      font-size: 16px;
     }
 
-    /* ±100 Hzだけ幅を広げる */
-    .plus100, .minus100 {
-      width: 120px; /* 幅だけ広げる */
+    /* ボタンの幅・高さはそのまま */
+    .plus100, .minus100, .btn-row button {
+      width: inherit;
+      height: inherit;
     }
 
-    /* START/STOPボタンは文字大きめ、少し小さめ */
+    /* START/STOPは文字大きめ維持 */
     .control-row button {
-      width: 130px;
-      height: 80px;
       font-size: 22px;
+      width: inherit;
+      height: inherit;
     }
 
     .freq-box {
@@ -116,7 +114,6 @@
 
 <body>
 
-<!-- 署名 -->
 <div class="signature">2025/01/07 by fujieda</div>
 
 <h2>周波数ジェネレータ</h2>
@@ -147,41 +144,35 @@
 </div>
 
 <script>
-  let audioCtx = null;
-  let osc = null;
-  let currentFreq = 440;
+let audioCtx = null;
+let osc = null;
+let currentFreq = 440;
 
-  function start() {
-    stop(); // 二重起動防止
-
-    if (!audioCtx) {
-      audioCtx = new (window.AudioContext || window.webkitAudioContext)();
-    }
-
-    osc = audioCtx.createOscillator();
-    osc.frequency.value = currentFreq;
-    osc.connect(audioCtx.destination);
-    osc.start();
+function start() {
+  stop();
+  if (!audioCtx) {
+    audioCtx = new (window.AudioContext || window.webkitAudioContext)();
   }
+  osc = audioCtx.createOscillator();
+  osc.frequency.value = currentFreq;
+  osc.connect(audioCtx.destination);
+  osc.start();
+}
 
-  function stop() {
-    if (osc) {
-      osc.stop();
-      osc.disconnect();
-      osc = null;
-    }
+function stop() {
+  if (osc) {
+    osc.stop();
+    osc.disconnect();
+    osc = null;
   }
+}
 
-  function changeFreq(step) {
-    currentFreq += step;
-    if (currentFreq < 1) currentFreq = 1;
-
-    document.getElementById("freq").textContent = currentFreq;
-
-    if (osc) {
-      osc.frequency.value = currentFreq;
-    }
-  }
+function changeFreq(step) {
+  currentFreq += step;
+  if (currentFreq < 1) currentFreq = 1;
+  document.getElementById("freq").textContent = currentFreq;
+  if (osc) osc.frequency.value = currentFreq;
+}
 </script>
 
 </body>
