@@ -65,9 +65,9 @@
     box-sizing: border-box;
   }
 
-  /* ±100 Hzだけ幅を広げる */
+  /* ±100 Hzだけ幅を広げる（PC・スマホ共通） */
   .plus100, .minus100 {
-    width: 150px;  /* PC用 */
+    width: 150px;  
   }
 
   /* START/STOPは横幅固定で高さも統一 */
@@ -90,23 +90,16 @@
       font-size: 18px;
     }
 
-    /* ±ボタン文字を少し小さくして表示 */
-    .btn-row button:not(.control-row button) {
-      font-size: 16px;   
-      width: 100px;         
-      height: 80px;        
-    }
-
-    /* ±100Hzだけ幅広げる */
+    /* ±100 Hz ボタン幅だけスマホでも広げる */
     .plus100, .minus100 {
-      width: 140px;  /* スマホ用 */
+      width: 120px;  /* 幅だけ広げる */
     }
 
-    /* START/STOPボタンは大きめ維持 */
+    /* START/STOP ボタン少し小さめ */
     .control-row button {
-      font-size: 22px;
       width: 130px;
       height: 80px;
+      font-size: 22px;
     }
 
     .freq-box {
@@ -188,4 +181,3 @@
 
 </body>
 </html>
-
