@@ -65,7 +65,7 @@
     box-sizing: border-box;
   }
 
-  /* ±100 Hzだけ幅を広げる（PC・スマホ共通） */
+  /* ±100 Hzだけ幅を広げる（PC用） */
   .plus100, .minus100 {
     width: 150px;  
   }
@@ -90,12 +90,17 @@
       font-size: 18px;
     }
 
-    /* ±100 Hz ボタン幅だけスマホでも広げる */
-    .plus100, .minus100 {
-      width: 120px;  /* 幅だけ広げる */
+    /* ±ボタンは文字そのまま、サイズも固定 */
+    .btn-row button:not(.control-row button) {
+      font-size: 24px; /* 文字サイズそのまま */
     }
 
-    /* START/STOP ボタン少し小さめ */
+    /* ±100 Hzだけ幅を広げる */
+    .plus100, .minus100 {
+      width: 120px; /* 幅だけ広げる */
+    }
+
+    /* START/STOPボタンは文字大きめ、少し小さめ */
     .control-row button {
       width: 130px;
       height: 80px;
