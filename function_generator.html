@@ -3,62 +3,67 @@
 <head>
 <meta charset="UTF-8">
 <title>Function Generator</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <style>
   body {
     font-family: sans-serif;
     text-align: center;
-    margin: 10px;
+    margin: 0;
+    padding: 5px;
+    box-sizing: border-box;
+  }
+
+  h2 {
+    margin: 8px 0;
   }
 
   /* 周波数表示の枠 */
   .freq-box {
     display: inline-block;
     border: 3px solid #000;
-    padding: 12px 24px;
-    margin: 10px 0 20px;
+    padding: 10px 16px;
+    margin: 8px 0 12px;
+    width: 90%;
+    max-width: 400px;
   }
 
   #freq {
-    font-size: 64px;
+    font-size: 48px;
     font-weight: bold;
   }
 
   .unit {
-    font-size: 28px;
+    font-size: 20px;
     margin-left: 6px;
   }
 
+  /* ボタンコンテナ */
+  .btn-row {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-bottom: 6px;
+  }
+
   button {
-    font-size: 18px;
-    padding: 10px 18px;
-    margin: 6px;
-    min-width: 90px;
+    font-size: 16px;
+    padding: 8px;
+    margin: 4px;
+    flex: 1 1 30%; /* 横3列に収める */
+    min-width: 70px;
+    max-width: 120px;
     white-space: nowrap;
     box-sizing: border-box;
   }
 
-  /* スマホ対応 */
-  @media (max-width: 480px) {
-    #freq {
-      font-size: 48px;
-    }
-
-    .unit {
-      font-size: 20px;
-    }
-
-    button {
-      font-size: 16px;
-      padding: 8px 12px;
-      margin: 4px;
-      min-width: 70px;
-    }
-
-    .freq-box {
-      padding: 10px 16px;
-    }
+  /* START/STOPは横幅50%ずつ */
+  .control-row button {
+    flex: 1 1 45%;
+    min-width: 80px;
+    max-width: 160px;
   }
+
 </style>
 </head>
 
@@ -66,31 +71,30 @@
 
 <h2>周波数ジェネレータ</h2>
 
-<!-- 枠付き周波数表示 -->
 <div class="freq-box">
   <span id="freq">440</span>
   <span class="unit">Hz</span>
 </div>
 
 <!-- ＋側 -->
-<p>
+<div class="btn-row">
   <button onclick="changeFreq(100)">＋100 Hz</button>
   <button onclick="changeFreq(10)">＋10 Hz</button>
   <button onclick="changeFreq(1)">＋1 Hz</button>
-</p>
+</div>
 
 <!-- −側 -->
-<p>
+<div class="btn-row">
   <button onclick="changeFreq(-100)">−100 Hz</button>
   <button onclick="changeFreq(-10)">−10 Hz</button>
   <button onclick="changeFreq(-1)">−1 Hz</button>
-</p>
+</div>
 
 <!-- 再生制御 -->
-<p>
+<div class="btn-row control-row">
   <button onclick="start()">START</button>
   <button onclick="stop()">STOP</button>
-</p>
+</div>
 
 <script>
   let audioCtx = null;
