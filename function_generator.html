@@ -14,6 +14,13 @@
     box-sizing: border-box;
   }
 
+  /* 署名 */
+  .signature {
+    font-size: 1.25rem;  /* h5相当 */
+    text-align: right;
+    margin: 4px 8px;
+  }
+
   h2 {
     margin: 8px 0;
   }
@@ -47,28 +54,60 @@
   }
 
   button {
-    font-size: 16px;
-    padding: 8px;
+    font-size: 24px;       /* 文字大きめ */
+    font-weight: bold;      /* 太字 */
+    width: 130px;           /* 横幅固定 */
+    height: 96px;           /* 縦幅固定 */
     margin: 4px;
-    flex: 1 1 30%; /* 横3列に収める */
-    min-width: 70px;
-    max-width: 120px;
-    white-space: nowrap;
+    white-space: nowrap;    
+    overflow: hidden;       
+    text-overflow: ellipsis;
     box-sizing: border-box;
   }
 
-  /* START/STOPは横幅50%ずつ */
+  /* START/STOPは横幅固定で高さも統一 */
   .control-row button {
-    flex: 1 1 45%;
-    min-width: 80px;
-    max-width: 160px;
+    width: 150px;
+    height: 96px;
   }
 
+  /* スマホ対応 */
+  @media (max-width: 480px) {
+    .signature {
+      font-size: 1rem;  /* 少し小さく */
+    }
+
+    #freq {
+      font-size: 40px;
+    }
+
+    .unit {
+      font-size: 18px;
+    }
+
+    button {
+      font-size: 22px;      
+      width: 100px;         
+      height: 80px;        
+    }
+
+    .control-row button {
+      width: 130px;
+      height: 80px;
+    }
+
+    .freq-box {
+      padding: 8px 12px;
+    }
+  }
 </style>
 </head>
 
 <body>
-<h5 style="text-align:right">2026/01/07 by fujieda</h5>
+
+<!-- 署名 -->
+<div class="signature">2025/01/07 by fujieda</div>
+
 <h2>周波数ジェネレータ</h2>
 
 <div class="freq-box">
@@ -136,7 +175,3 @@
 
 </body>
 </html>
-
-
-
-
