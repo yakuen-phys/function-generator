@@ -55,9 +55,9 @@
 
   button {
     font-size: 24px;       /* 文字大きめ */
-    font-weight: bold;      /* 太字 */
-    width: 130px;           /* 横幅固定 */
-    height: 96px;           /* 縦幅固定 */
+    font-weight: bold;      
+    width: 130px;           
+    height: 96px;           
     margin: 4px;
     white-space: nowrap;    
     overflow: hidden;       
@@ -74,7 +74,7 @@
   /* スマホ対応 */
   @media (max-width: 480px) {
     .signature {
-      font-size: 1rem;  /* 少し小さく */
+      font-size: 1rem;  
     }
 
     #freq {
@@ -85,13 +85,16 @@
       font-size: 18px;
     }
 
-    button {
-      font-size: 22px;      
-      width: 100px;         
-      height: 80px;        
+    /* ±ボタン用 */
+    .btn-row button:not(.control-row button) {
+      font-size: 16px;   /* 少し小さくして文字表示 */
+      width: 100px;
+      height: 80px;
     }
 
+    /* START/STOPボタンは大きめ維持 */
     .control-row button {
+      font-size: 22px;
       width: 130px;
       height: 80px;
     }
