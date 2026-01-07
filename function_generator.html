@@ -54,7 +54,7 @@
   }
 
   button {
-    font-size: 24px;       /* 文字大きめ */
+    font-size: 24px;       
     font-weight: bold;      
     width: 130px;           
     height: 96px;           
@@ -63,6 +63,11 @@
     overflow: hidden;       
     text-overflow: ellipsis;
     box-sizing: border-box;
+  }
+
+  /* ±100 Hzだけ幅を広げる */
+  .plus100, .minus100 {
+    width: 150px;  /* PC用 */
   }
 
   /* START/STOPは横幅固定で高さも統一 */
@@ -85,11 +90,16 @@
       font-size: 18px;
     }
 
-    /* ±ボタン用 */
+    /* ±ボタン文字を少し小さくして表示 */
     .btn-row button:not(.control-row button) {
-      font-size: 16px;   /* 少し小さくして文字表示 */
-      width: 100px;
-      height: 80px;
+      font-size: 16px;   
+      width: 100px;         
+      height: 80px;        
+    }
+
+    /* ±100Hzだけ幅広げる */
+    .plus100, .minus100 {
+      width: 120px;  /* スマホ用 */
     }
 
     /* START/STOPボタンは大きめ維持 */
@@ -120,14 +130,14 @@
 
 <!-- ＋側 -->
 <div class="btn-row">
-  <button onclick="changeFreq(100)">＋100 Hz</button>
+  <button class="plus100" onclick="changeFreq(100)">＋100 Hz</button>
   <button onclick="changeFreq(10)">＋10 Hz</button>
   <button onclick="changeFreq(1)">＋1 Hz</button>
 </div>
 
 <!-- −側 -->
 <div class="btn-row">
-  <button onclick="changeFreq(-100)">−100 Hz</button>
+  <button class="minus100" onclick="changeFreq(-100)">−100 Hz</button>
   <button onclick="changeFreq(-10)">−10 Hz</button>
   <button onclick="changeFreq(-1)">−1 Hz</button>
 </div>
