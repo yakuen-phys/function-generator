@@ -54,7 +54,7 @@ h2 {
   align-items: stretch; /* 高さ揃え */
 }
 
-/* ボタンの基本サイズ統一（PC版・スマホ版共通） */
+/* ボタンの基本サイズ統一（PC版） */
 button {
   font-size: 24px;      
   font-weight: bold;
@@ -67,22 +67,32 @@ button {
   box-sizing: border-box;
 }
 
-/* スマホ版 */
+/* START/STOP PC版サイズ */
+.control-row button {}
+
+/* スマホ版調整 */
 @media (max-width: 480px) {
-  /* ボタン幅を少し調整 */
-  .plus100, .minus100 {
-    width: 150px; /* ±100Hzボタンだけ幅を広くする */
-  }
-
-  /* 他のボタンは幅・高さそのまま */
-  button {
-    height: 96px; /* 高さは絶対に変えない */
-    font-size: 24px; /* 文字サイズそのまま */
-  }
-
   .signature { font-size: 1rem; }
   #freq { font-size: 40px; }
   .unit { font-size: 18px; }
+
+  /* ボタンサイズは少し小さくして列を揃える */
+  button {
+    width: 100px;
+    height: 80px; /* 高さ固定 */
+  }
+
+  /* ±100Hz / ±10Hz の文字サイズだけ小さく */
+  .plus100, .minus100,
+  .btn-row button:nth-child(2), .btn-row button:nth-child(5) {
+    font-size: 16px;
+  }
+
+  /* ±1Hz と START/STOP は文字サイズを揃える */
+  .btn-row button:nth-child(3), .btn-row button:nth-child(6),
+  .control-row button {
+    font-size: 18px;
+  }
 }
 </style>
 </head>
