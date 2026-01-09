@@ -83,14 +83,14 @@ button {
       }
 
   /* ±100Hz / ±10Hz の文字サイズだけ小さく */
-  .plus100, .minus100
+  .plus100, .minus100,.btn-row button:nth-child(2), .btn-row button:nth-child(5)
   {
     font-size: 14px;
   }
 
   /* ±1Hz と START/STOP は文字サイズを揃える */
-  .btn-row button:nth-child(3), .btn-row button:nth-child(6),.btn-row button:nth-child(2), .btn-row button:nth-child(5),
-  .control-row button {
+  .btn-row button:nth-child(3), .btn-row button:nth-child(6)
+   {
     font-size: 18px;
   }
 }
@@ -162,6 +162,7 @@ function changeFreq(step) {
 
 </body>
 </html>
+
 
 
 
