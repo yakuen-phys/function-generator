@@ -87,7 +87,12 @@ button {
   {
     font-size: 14px;
   }
-
+ 
+  /* ±1Hz と START/STOP は文字サイズを揃える */
+  .btn-row button:nth-child(3), .btn-row button:nth-child(6)
+   {
+    font-size: 18px;
+  }
  
   
   .control {
@@ -162,6 +167,7 @@ function changeFreq(step) {
 
 </body>
 </html>
+
 
 
 
