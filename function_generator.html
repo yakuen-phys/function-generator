@@ -89,8 +89,12 @@ button {
   }
 
   /* ±1Hz と START/STOP は文字サイズを揃える */
-  .btn-row button:nth-child(3), .btn-row button:nth-child(6),.cotrol-row
+  .btn-row button:nth-child(3), .btn-row button:nth-child(6)
    {
+    font-size: 18px;
+  }
+  
+  .control {
     font-size: 18px;
   }
 }
@@ -123,9 +127,9 @@ button {
 </div>
 
 <!-- 再生制御 -->
-<div class="btn-row control-row">
-  <button onclick="start()">START</button>
-  <button onclick="stop()">STOP</button>
+  <div class="btn-row control-row">
+  <button class="control" onclick="start()">START</button>
+  <button class="control" onclick="stop()">STOP</button>
 </div>
 
 <script>
@@ -162,6 +166,7 @@ function changeFreq(step) {
 
 </body>
 </html>
+
 
 
 
